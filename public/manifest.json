@@ -1,0 +1,10 @@
+{
+  "name": "우리 학교 기후환경 매니저",
+  "short_name": "기후환경 매니저",
+  "description": "학생들이 학교 공간의 기후환경 문제를 관찰하고 개선 제안을 만드는 PWA MVP",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eef5ef",
+  "theme_color": "#2f7d4f",
+  "lang": "ko-KR"
+}
