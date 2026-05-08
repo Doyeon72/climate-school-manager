@@ -559,6 +559,8 @@ export default function HomePage() {
           </article>
         </section>
       )}
+
+      <footer className="site-footer">sponsor by 용인시</footer>
     </main>
   )
 }

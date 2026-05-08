@@ -309,6 +309,15 @@ textarea { min-height: 92px; resize: vertical; }
   max-height: 420px;
 }
 
+.site-footer {
+  margin-top: 28px;
+  padding: 18px 0 4px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
 /* v4 refinements */
 .school-name {
   display: inline-flex;
