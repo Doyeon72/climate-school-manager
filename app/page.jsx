@@ -354,7 +354,15 @@ export default function HomePage() {
           <p className="hero-copy">우리의 제안 한 건 한 건이 더 나은 학교생활을 만듭니다.</p>
         </div>
         <div className="mascot-card" aria-label="조아용 캐릭터 영역">
-          <button className="gear-button" type="button" aria-label="조아용 꾸미기 화면 열기" onClick={(event) => { event.stopPropagation(); setToast(''); setTab('closet') }}>⚙</button>
+          <button className="gear-button" type="button" aria-label="조아용 상점 열기" onClick={(event) => { event.stopPropagation(); setToast(''); setTab('closet') }}>
+            <svg className="shop-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M7 10.5 9.4 4.8a2 2 0 0 1 1.9-1.2h1.4a2 2 0 0 1 1.9 1.2l2.4 5.7" />
+              <path d="M5.4 9.8h13.2a1.8 1.8 0 0 1 1.8 2.1l-1 6.4a2.4 2.4 0 0 1-2.4 2H7a2.4 2.4 0 0 1-2.4-2l-1-6.4a1.8 1.8 0 0 1 1.8-2.1Z" />
+              <path d="M8 13.2v4.4" />
+              <path d="M12 13.2v4.4" />
+              <path d="M16 13.2v4.4" />
+            </svg>
+          </button>
           <JoayongMascot costume={selectedCostume} large />
           <strong>{selectedCostume.name}</strong>
           <span>기후환경 레벨 {climateLevel}</span>
