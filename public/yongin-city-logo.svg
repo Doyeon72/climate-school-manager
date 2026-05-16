@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="290" viewBox="0 0 520 290" role="img" aria-labelledby="title desc">
+  <title id="title">Yongin City logo</title>
+  <desc id="desc">Yongin City logo with symbol and Korean and English city name.</desc>
+  <rect width="520" height="290" fill="#fff"/>
+  <g transform="translate(40 42)">
+    <path d="M0 62h47c0 25 18 45 42 45s42-20 42-45h47a89 89 0 0 1-178 0z" fill="#b80cff"/>
+    <circle cx="89" cy="34" r="34" fill="#8b12ff"/>
+    <circle cx="89" cy="159" r="47" fill="#35ee76"/>
+    <path d="M42 131a89 89 0 0 0 94 0 47 47 0 0 0-94 0z" fill="#0714ff"/>
+  </g>
+  <g fill="#333" font-family="Arial, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif" font-weight="800">
+    <text x="240" y="155" font-size="82">용인시</text>
+    <text x="245" y="214" font-size="40" letter-spacing="-1">YONGIN CITY</text>
+  </g>
+</svg>

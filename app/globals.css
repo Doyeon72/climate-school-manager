@@ -311,11 +311,15 @@ textarea { min-height: 92px; resize: vertical; }
 
 .site-footer {
   margin-top: 28px;
-  padding: 18px 0 4px;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 700;
+  padding: 14px 0 4px;
   text-align: center;
+}
+
+.site-footer img {
+  display: inline-block;
+  width: min(150px, 42vw);
+  height: auto;
+  opacity: .86;
 }
 
 /* v4 refinements */

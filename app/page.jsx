@@ -560,7 +560,9 @@ export default function HomePage() {
         </section>
       )}
 
-      <footer className="site-footer">sponsor by 용인시</footer>
+      <footer className="site-footer">
+        <img src="/yongin-city-logo.svg" alt="용인시" />
+      </footer>
     </main>
   )
 }
