@@ -115,6 +115,39 @@ p { line-height: 1.65; }
 .card.highlight { background: linear-gradient(135deg, #ffffff 0%, #e0f2e6 100%); }
 .card.soft { background: #f5fbf6; }
 .card.big-number h2 { font-size: clamp(34px, 6vw, 58px); color: var(--green-dark); }
+.energy-card-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.energy-card-header .eyebrow {
+  margin: 0;
+}
+.month-picker {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #e4f3e9;
+  color: var(--green-dark);
+  border: 1px solid var(--line);
+}
+.month-picker select {
+  width: auto;
+  min-width: 74px;
+  padding: 0 24px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--green-dark);
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  outline: 0;
+}
 .plain-list { padding-left: 20px; line-height: 1.8; color: var(--muted); }
 .list-row {
   display: flex;

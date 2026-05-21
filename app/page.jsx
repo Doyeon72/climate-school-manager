@@ -29,6 +29,8 @@ const SCHOOL_OPTIONS = [
   '홍천중학교',
 ]
 
+const MONTH_OPTIONS = Array.from({ length: 12 }, (_, index) => index + 1)
+
 const INITIAL_OBSERVATIONS = [
   {
     id: 'sample-1',
@@ -212,6 +214,7 @@ export default function HomePage() {
   const [pointsLog, setPointsLog] = useState([])
   const [selectedCostumeId, setSelectedCostumeId] = useState('basic')
   const [selectedSchoolName, setSelectedSchoolName] = useState(DEFAULT_SCHOOL.name)
+  const [selectedMonth, setSelectedMonth] = useState(1)
   const [toast, setToast] = useState('')
   const [dailyMission, setDailyMission] = useState(MANAGER_MISSIONS[0])
   const [energyTip, setEnergyTip] = useState(ENERGY_TIPS[0])
@@ -237,6 +240,7 @@ export default function HomePage() {
     setPointsLog(loadFromStorage('pointsLog', []))
     setSelectedCostumeId(loadFromStorage('selectedCostumeId', 'basic'))
     setSelectedSchoolName(loadFromStorage('selectedSchoolName', DEFAULT_SCHOOL.name))
+    setSelectedMonth(loadFromStorage('selectedMonth', 1))
     setDailyMission(getRandomItem(MANAGER_MISSIONS))
     setEnergyTip(getRandomItem(ENERGY_TIPS))
   }, [])
@@ -246,6 +250,7 @@ export default function HomePage() {
   useEffect(() => saveToStorage('pointsLog', pointsLog), [pointsLog])
   useEffect(() => saveToStorage('selectedCostumeId', selectedCostumeId), [selectedCostumeId])
   useEffect(() => saveToStorage('selectedSchoolName', selectedSchoolName), [selectedSchoolName])
+  useEffect(() => saveToStorage('selectedMonth', selectedMonth), [selectedMonth])
 
   const dailyPoints = useMemo(() => getDailyPoints(pointsLog), [pointsLog])
   const totalPoints = useMemo(() => pointsLog.reduce((sum, item) => sum + item.points, 0), [pointsLog])
@@ -362,6 +367,7 @@ export default function HomePage() {
     setPointsLog([])
     setSelectedCostumeId('basic')
     setSelectedSchoolName(DEFAULT_SCHOOL.name)
+    setSelectedMonth(1)
     setDailyMission(getRandomItem(MANAGER_MISSIONS))
     setEnergyTip(getRandomItem(ENERGY_TIPS))
     setToast('데모 데이터가 초기화됐어요.')
@@ -451,7 +457,18 @@ export default function HomePage() {
       {tab === 'energy' && (
         <section className="grid two">
           <article className="card big-number">
-            <p className="eyebrow">우리 학교 에너지 카드</p>
+            <div className="energy-card-header">
+              <p className="eyebrow">우리 학교 에너지 카드</p>
+              <label className="month-picker" aria-label="월 선택">
+                <select value={selectedMonth} onChange={(event) => setSelectedMonth(Number(event.target.value))}>
+                  {MONTH_OPTIONS.map((month) => (
+                    <option key={month} value={month}>
+                      {month}월
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
             <h2>{selectedSchool.carbonText}</h2>
             <p>
               이 숫자는 학교 건물 1㎡를 1년 동안 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
