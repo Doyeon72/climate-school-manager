@@ -350,8 +350,10 @@ textarea { min-height: 92px; resize: vertical; }
 
 .site-footer img {
   display: inline-block;
-  width: min(150px, 42vw);
+  width: min(180px, 48vw);
+  max-width: 100%;
   height: auto;
+  object-fit: contain;
   opacity: .86;
 }
 
