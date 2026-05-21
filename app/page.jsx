@@ -11,6 +11,24 @@ const DEFAULT_SCHOOL = {
   tierMessage: '지금도 잘 관리되고 있는 부분이 있지만, 조금만 더 살펴보면 더 아끼고 더 편안하게 바꿀 수 있는 공간을 찾을 수 있어요.',
 }
 
+const SCHOOL_OPTIONS = [
+  '대지중학교',
+  '용인대덕중학교',
+  '죽전중학교',
+  '현암중학교',
+  '문정중학교',
+  '수지중학교',
+  '이현중학교',
+  '정평중학교',
+  '상현중학교',
+  '서원중학교',
+  '성복중학교',
+  '손곡중학교',
+  '용인한빛중학교',
+  '신봉중학교',
+  '홍천중학교',
+]
+
 const INITIAL_OBSERVATIONS = [
   {
     id: 'sample-1',
@@ -193,6 +211,7 @@ export default function HomePage() {
   const [suggestions, setSuggestions] = useState(INITIAL_SUGGESTIONS)
   const [pointsLog, setPointsLog] = useState([])
   const [selectedCostumeId, setSelectedCostumeId] = useState('basic')
+  const [selectedSchoolName, setSelectedSchoolName] = useState(DEFAULT_SCHOOL.name)
   const [toast, setToast] = useState('')
   const [dailyMission, setDailyMission] = useState(MANAGER_MISSIONS[0])
   const [energyTip, setEnergyTip] = useState(ENERGY_TIPS[0])
@@ -217,6 +236,7 @@ export default function HomePage() {
     setSuggestions(loadFromStorage('suggestions', INITIAL_SUGGESTIONS))
     setPointsLog(loadFromStorage('pointsLog', []))
     setSelectedCostumeId(loadFromStorage('selectedCostumeId', 'basic'))
+    setSelectedSchoolName(loadFromStorage('selectedSchoolName', DEFAULT_SCHOOL.name))
     setDailyMission(getRandomItem(MANAGER_MISSIONS))
     setEnergyTip(getRandomItem(ENERGY_TIPS))
   }, [])
@@ -225,9 +245,11 @@ export default function HomePage() {
   useEffect(() => saveToStorage('suggestions', suggestions), [suggestions])
   useEffect(() => saveToStorage('pointsLog', pointsLog), [pointsLog])
   useEffect(() => saveToStorage('selectedCostumeId', selectedCostumeId), [selectedCostumeId])
+  useEffect(() => saveToStorage('selectedSchoolName', selectedSchoolName), [selectedSchoolName])
 
   const dailyPoints = useMemo(() => getDailyPoints(pointsLog), [pointsLog])
   const totalPoints = useMemo(() => pointsLog.reduce((sum, item) => sum + item.points, 0), [pointsLog])
+  const selectedSchool = useMemo(() => ({ ...DEFAULT_SCHOOL, name: selectedSchoolName }), [selectedSchoolName])
   const climateLevel = getClimateLevel(totalPoints)
   const selectedCostume = COSTUMES.find((item) => item.id === selectedCostumeId) || COSTUMES[0]
   const nextReward = getNextReward(totalPoints)
@@ -339,6 +361,7 @@ export default function HomePage() {
     setSuggestions(INITIAL_SUGGESTIONS)
     setPointsLog([])
     setSelectedCostumeId('basic')
+    setSelectedSchoolName(DEFAULT_SCHOOL.name)
     setDailyMission(getRandomItem(MANAGER_MISSIONS))
     setEnergyTip(getRandomItem(ENERGY_TIPS))
     setToast('데모 데이터가 초기화됐어요.')
@@ -349,7 +372,15 @@ export default function HomePage() {
       <section className="hero-card">
         <div>
           <p className="eyebrow">카카오 테크포임팩트리빙랩 단국대학교 기후보호대</p>
-          <p className="school-name">{DEFAULT_SCHOOL.name}</p>
+          <label className="school-picker" aria-label="학교 선택">
+            <select value={selectedSchoolName} onChange={(event) => setSelectedSchoolName(event.target.value)}>
+              {SCHOOL_OPTIONS.map((schoolName) => (
+                <option key={schoolName} value={schoolName}>
+                  {schoolName}
+                </option>
+              ))}
+            </select>
+          </label>
           <h1>우리 학교 기후환경 매니저</h1>
           <p className="hero-copy">우리의 제안 한 건 한 건이 더 나은 학교생활을 만듭니다.</p>
         </div>
@@ -421,15 +452,15 @@ export default function HomePage() {
         <section className="grid two">
           <article className="card big-number">
             <p className="eyebrow">우리 학교 에너지 카드</p>
-            <h2>{DEFAULT_SCHOOL.carbonText}</h2>
+            <h2>{selectedSchool.carbonText}</h2>
             <p>
               이 숫자는 학교 건물 1㎡를 1년 동안 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
             </p>
           </article>
           <article className="card">
             <p className="eyebrow">우리 학교의 에너지 효율</p>
-            <h2>{DEFAULT_SCHOOL.efficiencyTier}</h2>
-            <p>{DEFAULT_SCHOOL.tierMessage}</p>
+            <h2>{selectedSchool.efficiencyTier}</h2>
+            <p>{selectedSchool.tierMessage}</p>
             <p className="note-text">이 카드는 성적표가 아니에요. 우리 학교를 더 잘 이해하고, 어떤 공간을 살펴보면 좋을지 정하는 자료예요.</p>
           </article>
           <article className="card">

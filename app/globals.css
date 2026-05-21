@@ -323,7 +323,7 @@ textarea { min-height: 92px; resize: vertical; }
 }
 
 /* v4 refinements */
-.school-name {
+.school-picker {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -334,8 +334,20 @@ textarea { min-height: 92px; resize: vertical; }
   background: #e4f3e9;
   color: var(--green-dark);
   border: 1px solid var(--line);
+}
+.school-picker select {
+  width: auto;
+  min-width: 152px;
+  max-width: min(100%, 260px);
+  padding: 0 24px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--green-dark);
   font-size: 17px;
   font-weight: 900;
+  cursor: pointer;
+  outline: 0;
 }
 .hero-copy {
   margin-top: 16px;
