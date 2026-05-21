@@ -31,6 +31,219 @@ const SCHOOL_OPTIONS = [
 
 const MONTH_OPTIONS = Array.from({ length: 12 }, (_, index) => index + 1)
 
+const SCHOOL_CARBON_BY_MONTH = {
+  대지중학교: {
+    1: 30.31,
+    2: 20.47,
+    3: 21.8,
+    4: 20.34,
+    5: 15.53,
+    6: 15.55,
+    7: 18.66,
+    8: 12.69,
+    9: 23.09,
+    10: 16.96,
+    11: 12.94,
+    12: 20.83,
+  },
+  용인대덕중학교: {
+    1: 30.61,
+    2: 13.77,
+    3: 16.04,
+    4: 19.2,
+    5: 13.71,
+    6: 14.45,
+    7: 17.39,
+    8: 11.42,
+    9: 19.42,
+    10: 14.83,
+    11: 13.54,
+    12: 19.74,
+  },
+  죽전중학교: {
+    1: 33.01,
+    2: 15.76,
+    3: 18.05,
+    4: 20.99,
+    5: 12.79,
+    6: 13.72,
+    7: 18.58,
+    8: 12.73,
+    9: 21.61,
+    10: 14.46,
+    11: 12.94,
+    12: 20.58,
+  },
+  현암중학교: {
+    1: 30.94,
+    2: 19.61,
+    3: 19.97,
+    4: 21.03,
+    5: 12.85,
+    6: 13.47,
+    7: 21.82,
+    8: 12.77,
+    9: 18.48,
+    10: 13.71,
+    11: 14.48,
+    12: 22.76,
+  },
+  문정중학교: {
+    1: 27.85,
+    2: 17.69,
+    3: 18.15,
+    4: 18.98,
+    5: 11.27,
+    6: 10.71,
+    7: 14.86,
+    8: 11.2,
+    9: 17.55,
+    10: 12,
+    11: 10.18,
+    12: 17.54,
+  },
+  수지중학교: {
+    1: 45.55,
+    2: 21.92,
+    3: 24.33,
+    4: 26.49,
+    5: 18.91,
+    6: 17.19,
+    7: 24.58,
+    8: 15.47,
+    9: 29.43,
+    10: 20.87,
+    11: 17.73,
+    12: 27.19,
+  },
+  이현중학교: {
+    1: 44.74,
+    2: 22.35,
+    3: 25.67,
+    4: 30,
+    5: 19.36,
+    6: 21.22,
+    7: 26.57,
+    8: 18.41,
+    9: 31.33,
+    10: 23.9,
+    11: 17.52,
+    12: 28.32,
+  },
+  정평중학교: {
+    1: 41.3,
+    2: 21.57,
+    3: 26.28,
+    4: 24.99,
+    5: 15.7,
+    6: 19.3,
+    7: 26.75,
+    8: 16.78,
+    9: 29.68,
+    10: 23.17,
+    11: 18.74,
+    12: 26.56,
+  },
+  상현중학교: {
+    1: 37.2,
+    2: 22.32,
+    3: 21.35,
+    4: 24.12,
+    5: 16.21,
+    6: 18.32,
+    7: 21.71,
+    8: 11.5,
+    9: 16.78,
+    10: 17.3,
+    11: 15.95,
+    12: 25.18,
+  },
+  서원중학교: {
+    1: 36.04,
+    2: 18.92,
+    3: 23.97,
+    4: 26.86,
+    5: 18.54,
+    6: 20.87,
+    7: 27.81,
+    8: 16.01,
+    9: 31.12,
+    10: 21.86,
+    11: 19.34,
+    12: 28.52,
+  },
+  성복중학교: {
+    1: 42.86,
+    2: 17.77,
+    3: 24.7,
+    4: 25.59,
+    5: 18.45,
+    6: 23.41,
+    7: 27.82,
+    8: 19.53,
+    9: 30.67,
+    10: 22.36,
+    11: 19.37,
+    12: 26.92,
+  },
+  손곡중학교: {
+    1: 28.44,
+    2: 17.03,
+    3: 17.84,
+    4: 17.5,
+    5: 13.64,
+    6: 21.43,
+    7: 15.07,
+    8: 11.02,
+    9: 17.87,
+    10: 13.73,
+    11: 12.52,
+    12: 17.85,
+  },
+  용인한빛중학교: {
+    1: 40.2,
+    2: 44.28,
+    3: 35.23,
+    4: 24.9,
+    5: 19.12,
+    6: 16.18,
+    7: 19.5,
+    8: 17.24,
+    9: 23.84,
+    10: 18.37,
+    11: 15.02,
+    12: 25.24,
+  },
+  신봉중학교: {
+    1: 33.75,
+    2: 20.58,
+    3: 20.64,
+    4: 18.8,
+    5: 12.92,
+    6: 13.09,
+    7: 15.14,
+    8: 11.78,
+    9: 16.26,
+    10: 13.55,
+    11: 12.52,
+    12: 19.78,
+  },
+  홍천중학교: {
+    1: 34.99,
+    2: 18.64,
+    3: 27.85,
+    4: 25.9,
+    5: 18.78,
+    6: 18.35,
+    7: 21.35,
+    8: 16.62,
+    9: 28.04,
+    10: 19.06,
+    11: 15.72,
+    12: 25.33,
+  },
+}
+
 const INITIAL_OBSERVATIONS = [
   {
     id: 'sample-1',
@@ -175,6 +388,10 @@ function getNextReward(totalPoints) {
   return COSTUMES.find((item) => item.requiredPoints > totalPoints) || COSTUMES[COSTUMES.length - 1]
 }
 
+function formatCarbonText(value) {
+  return typeof value === 'number' ? `${value.toFixed(2)} tonCO₂-eq/m²` : DEFAULT_SCHOOL.carbonText
+}
+
 function hasEnoughText(value, minLength = 5) {
   return value.trim().length >= minLength
 }
@@ -254,7 +471,14 @@ export default function HomePage() {
 
   const dailyPoints = useMemo(() => getDailyPoints(pointsLog), [pointsLog])
   const totalPoints = useMemo(() => pointsLog.reduce((sum, item) => sum + item.points, 0), [pointsLog])
-  const selectedSchool = useMemo(() => ({ ...DEFAULT_SCHOOL, name: selectedSchoolName }), [selectedSchoolName])
+  const selectedSchool = useMemo(() => {
+    const carbonValue = SCHOOL_CARBON_BY_MONTH[selectedSchoolName]?.[selectedMonth]
+    return {
+      ...DEFAULT_SCHOOL,
+      name: selectedSchoolName,
+      carbonText: formatCarbonText(carbonValue),
+    }
+  }, [selectedMonth, selectedSchoolName])
   const climateLevel = getClimateLevel(totalPoints)
   const selectedCostume = COSTUMES.find((item) => item.id === selectedCostumeId) || COSTUMES[0]
   const nextReward = getNextReward(totalPoints)
@@ -471,7 +695,7 @@ export default function HomePage() {
             </div>
             <h2>{selectedSchool.carbonText}</h2>
             <p>
-              이 숫자는 학교 건물 1㎡를 1년 동안 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
+              이 숫자는 {selectedMonth}월에 학교 건물 1㎡를 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
             </p>
           </article>
           <article className="card">
