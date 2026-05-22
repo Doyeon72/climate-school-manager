@@ -607,13 +607,10 @@ export default function HomePage() {
           <p className="hero-copy">우리의 제안 한 건 한 건이 더 나은 학교생활을 만듭니다.</p>
         </div>
         <div className="mascot-card" aria-label="조아용 캐릭터 영역">
-          <button className="gear-button" type="button" aria-label="조아용 상점 열기" onClick={(event) => { event.stopPropagation(); setToast(''); setTab('closet') }}>
-            <svg className="shop-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M7 10.5 9.4 4.8a2 2 0 0 1 1.9-1.2h1.4a2 2 0 0 1 1.9 1.2l2.4 5.7" />
-              <path d="M5.4 9.8h13.2a1.8 1.8 0 0 1 1.8 2.1l-1 6.4a2.4 2.4 0 0 1-2.4 2H7a2.4 2.4 0 0 1-2.4-2l-1-6.4a1.8 1.8 0 0 1 1.8-2.1Z" />
-              <path d="M8 13.2v4.4" />
-              <path d="M12 13.2v4.4" />
-              <path d="M16 13.2v4.4" />
+          <button className="gear-button" type="button" aria-label="조아용 설정 열기" onClick={(event) => { event.stopPropagation(); setToast(''); setTab('closet') }}>
+            <svg className="gear-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 15.4a3.4 3.4 0 1 0 0-6.8 3.4 3.4 0 0 0 0 6.8Z" />
+              <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.3a2 2 0 0 1-4 0V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1A2 2 0 0 1 4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H2.7a2 2 0 0 1 0-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7A2 2 0 0 1 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6v-.3a2 2 0 0 1 4 0V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1A2 2 0 0 1 19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.3a2 2 0 0 1 0 4H21a1.7 1.7 0 0 0-1.6 1Z" />
             </svg>
           </button>
           <JoayongMascot costume={selectedCostume} large />

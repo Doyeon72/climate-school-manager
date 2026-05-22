@@ -439,7 +439,7 @@ textarea { min-height: 92px; resize: vertical; }
   z-index: 5;
   pointer-events: auto;
 }
-.shop-icon {
+.gear-icon {
   width: 22px;
   height: 22px;
   display: block;
