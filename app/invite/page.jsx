@@ -16,7 +16,7 @@ const SCHOOLS = [
   '용인한빛중학교',
   '신봉중학교',
   '홍천중학교',
-  '동천중학교',
+  '성서중학교',
 ]
 
 export const metadata = {
