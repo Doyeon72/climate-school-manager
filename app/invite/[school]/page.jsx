@@ -16,7 +16,7 @@ const SCHOOLS = [
   '용인한빛중학교',
   '신봉중학교',
   '홍천중학교',
-  '동천중학교',
+  '성서중학교',
 ]
 
 export async function generateMetadata({ params }) {
@@ -65,8 +65,8 @@ export default async function SchoolInvitePage({ params }) {
           </div>
         </div>
 
-        <Link className="start-button" href={`/?school=${encodeURIComponent(schoolName)}`}>
-          우리 학교 기후환경 매니저 시작하기
+        <Link className="start-button" href={`/invite/${encodeURIComponent(schoolName)}/join`}>
+          학년·반·번호·이름 입력하고 시작하기
         </Link>
       </section>
 
