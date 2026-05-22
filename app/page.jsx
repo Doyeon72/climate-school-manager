@@ -602,15 +602,7 @@ export default function HomePage() {
       <section className="hero-card">
         <div>
           <p className="eyebrow">카카오 테크포임팩트리빙랩 단국대학교 기후보호대</p>
-          <label className="school-picker" aria-label="학교 선택">
-            <select value={selectedSchoolName} onChange={(event) => setSelectedSchoolName(event.target.value)}>
-              {SCHOOL_OPTIONS.map((schoolName) => (
-                <option key={schoolName} value={schoolName}>
-                  {schoolName}
-                </option>
-              ))}
-            </select>
-          </label>
+          <p className="selected-school-badge">{selectedSchool.name}</p>
           <h1>우리 학교 기후환경 매니저</h1>
           <p className="hero-copy">우리의 제안 한 건 한 건이 더 나은 학교생활을 만듭니다.</p>
         </div>
