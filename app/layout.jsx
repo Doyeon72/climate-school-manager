@@ -1,4 +1,5 @@
 import './globals.css';
+import DevNavigator from './DevNavigator';
 
 export const metadata = {
   title: '우리 학교 기후환경 매니저',
@@ -15,7 +16,10 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <DevNavigator />
+        {children}
+      </body>
     </html>
   );
 }

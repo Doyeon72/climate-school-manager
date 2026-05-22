@@ -34,6 +34,77 @@ button.ghost {
   border: 1px solid var(--line);
 }
 
+.dev-navigator {
+  position: absolute;
+  top: max(3px, env(safe-area-inset-top));
+  left: max(14px, calc((100vw - 1120px) / 2 + 14px));
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(255, 255, 255, .86);
+}
+
+.dev-nav-button {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .52);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .2);
+  color: rgba(255, 255, 255, .9);
+  box-shadow: 0 3px 10px rgba(18, 52, 31, .1);
+  backdrop-filter: blur(12px);
+  font-size: 17px;
+  line-height: 1;
+}
+
+.dev-nav-button:hover {
+  background: rgba(255, 255, 255, .34);
+  color: #ffffff;
+}
+
+.dev-nav-menu-button {
+  font-size: 13px;
+}
+
+.dev-nav-panel {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  display: grid;
+  gap: 6px;
+  min-width: 132px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, .5);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .22);
+  box-shadow: 0 12px 28px rgba(18, 52, 31, .16);
+  backdrop-filter: blur(14px);
+}
+
+.dev-nav-panel span,
+.dev-nav-panel a {
+  display: block;
+  padding: 7px 9px;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, .94);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  text-shadow: 0 1px 8px rgba(18, 52, 31, .24);
+}
+
+.dev-nav-panel span {
+  opacity: .7;
+}
+
+.dev-nav-panel a:hover {
+  background: rgba(255, 255, 255, .22);
+}
+
 .app-shell {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
