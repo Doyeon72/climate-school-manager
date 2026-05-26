@@ -582,7 +582,7 @@ function JoayongMascot({ costume, compact = false, large = false }) {
   )
 }
 
-function MonthlyCarbonChart({ valuesByMonth, selectedMonth }) {
+function MonthlyCarbonChart({ schoolName, valuesByMonth, selectedMonth }) {
   const chartValues = MONTH_OPTIONS.map((month) => ({
     month,
     value: valuesByMonth?.[month] || 0,
@@ -613,12 +613,12 @@ function MonthlyCarbonChart({ valuesByMonth, selectedMonth }) {
   const ticks = [0, 10, 20, 30, 40].filter((tick) => tick <= yMax)
 
   return (
-    <section className="carbon-chart-panel" aria-label="상현중학교 월별 탄소배출량 그래프">
+    <section className="carbon-chart-panel" aria-label={`${schoolName} 월별 탄소배출량 그래프`}>
       <div className="carbon-chart-header">
         <strong>월별 흐름</strong>
         <span>단위: tonCO₂-eq/m²</span>
       </div>
-      <svg className="carbon-chart" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${selectedMonth}월 탄소배출량 강조 그래프`}>
+      <svg className="carbon-chart" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${schoolName} ${selectedMonth}월 탄소배출량 강조 그래프`}>
         {ticks.map((tick) => (
           <g key={tick}>
             <line x1={left} y1={y(tick)} x2={plotRight} y2={y(tick)} className="carbon-grid-line" />
@@ -939,7 +939,7 @@ export default function HomePage() {
               <p className="energy-lead">
                 이 숫자는 {selectedMonth}월에 학교 건물 1㎡를 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
               </p>
-              <MonthlyCarbonChart valuesByMonth={SCHOOL_CARBON_BY_MONTH[selectedSchoolName]} selectedMonth={selectedMonth} />
+              <MonthlyCarbonChart schoolName={selectedSchoolName} valuesByMonth={SCHOOL_CARBON_BY_MONTH[selectedSchoolName]} selectedMonth={selectedMonth} />
               <div className="energy-explainer-grid">
                 {ENERGY_CARD_SECTIONS
                   .filter((section) => !['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
