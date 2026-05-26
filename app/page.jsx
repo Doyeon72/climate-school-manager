@@ -831,8 +831,8 @@ export default function HomePage() {
       )}
 
       {tab === 'energy' && (
-        <section className="grid two">
-          <article className="card big-number">
+        <section className="grid two energy-layout">
+          <article className="card big-number energy-feature">
             <div className="energy-card-header">
               <p className="eyebrow">우리 학교 에너지 카드</p>
               <label className="month-picker" aria-label="월 선택">
@@ -850,38 +850,42 @@ export default function HomePage() {
               <p className="energy-lead">
                 이 숫자는 {selectedMonth}월에 학교 건물 1㎡를 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
               </p>
-              {ENERGY_CARD_SECTIONS
-                .filter((section) => !['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
-                .map((section) => (
-                <div className="energy-explainer-group" key={section.title}>
-                  <h3>{section.title}</h3>
-                  <ul>
-                    {section.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              <div className="energy-explainer-grid">
+                {ENERGY_CARD_SECTIONS
+                  .filter((section) => !['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
+                  .map((section) => (
+                    <div className="energy-explainer-group" key={section.title}>
+                      <h3>{section.title}</h3>
+                      <ul>
+                        {section.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+              </div>
             </div>
           </article>
-          <article className="card">
+          <article className="card energy-feature">
             <p className="eyebrow">우리 학교의 에너지 효율</p>
             <h2>{selectedSchool.efficiencyTier}</h2>
             <p>{selectedSchool.tierMessage}</p>
             <p className="note-text">이 카드는 성적표가 아니에요. 우리 학교를 더 잘 이해하고, 어떤 공간을 살펴보면 좋을지 정하는 자료예요.</p>
             <div className="energy-explainer efficiency-explainer">
-              {ENERGY_CARD_SECTIONS
-                .filter((section) => ['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
-                .map((section) => (
-                  <div className="energy-explainer-group" key={section.title}>
-                    <h3>{section.title}</h3>
-                    <ul>
-                      {section.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+              <div className="energy-explainer-grid">
+                {ENERGY_CARD_SECTIONS
+                  .filter((section) => ['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
+                  .map((section) => (
+                    <div className="energy-explainer-group" key={section.title}>
+                      <h3>{section.title}</h3>
+                      <ul>
+                        {section.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+              </div>
             </div>
           </article>
           <article className="card">
