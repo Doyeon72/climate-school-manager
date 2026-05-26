@@ -682,7 +682,7 @@ export default function HomePage() {
                 </select>
               </label>
             </div>
-            <h2>{selectedSchool.carbonText}</h2>
+            <h2 className="carbon-metric">{selectedSchool.carbonText}</h2>
             <p>
               이 숫자는 {selectedMonth}월에 학교 건물 1㎡를 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
             </p>
