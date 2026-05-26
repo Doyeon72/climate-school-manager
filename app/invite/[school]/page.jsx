@@ -38,13 +38,19 @@ export default async function SchoolInvitePage({ params }) {
   const { school } = await params
   const schoolName = getSchoolName(school)
   const isKnownSchool = SCHOOLS.includes(schoolName)
+  const isSanghyun = schoolName === '상현중학교'
 
   return (
     <main className="school-invite-page">
       <section className="school-invite-card">
         <Link className="back-link" href="/invite">학교 목록</Link>
         <p className="invite-eyebrow">수지구 기후환경 매니저</p>
-        <h1>{schoolName}</h1>
+        <div className="school-title-row">
+          <h1>{schoolName}</h1>
+          {isSanghyun && (
+            <img className="school-emblem" src="/sanghyun-school-emblem.png" alt="상현중학교 교표" />
+          )}
+        </div>
         <p className="invite-copy">
           우리 학교의 더운 공간, 전기 낭비, 물 낭비를 함께 발견하고 개선 제안으로
           이어가는 학생 참여 화면입니다.
@@ -70,11 +76,20 @@ export default async function SchoolInvitePage({ params }) {
         </Link>
       </section>
 
+      <footer className="site-footer">
+        <img className="footer-logo dankook" src="/logo-dankook-trimmed.png" alt="단국대학교" />
+        <img className="footer-logo" src="/logo-kakao-impact-trimmed.png" alt="카카오임팩트" />
+        <img className="footer-logo" src="/logo-biohealth-trimmed.png" alt="바이오헬스" />
+        <img className="footer-logo" src="/logo-yongin-trimmed.png" alt="용인시" />
+      </footer>
+
       <style>{`
         .school-invite-page {
           min-height: 100vh;
           display: grid;
           place-items: center;
+          align-content: center;
+          gap: 18px;
           padding: 28px 16px;
           color: #1e2d24;
         }
@@ -100,10 +115,23 @@ export default async function SchoolInvitePage({ params }) {
           font-size: 13px;
           font-weight: 800;
         }
+        .school-title-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 22px;
+        }
         .school-invite-card h1 {
           margin: 0;
           font-size: clamp(38px, 8vw, 68px);
           line-height: 1.02;
+        }
+        .school-emblem {
+          width: clamp(118px, 20vw, 168px);
+          height: auto;
+          object-fit: contain;
+          flex: 0 0 auto;
+          margin-top: -28px;
         }
         .invite-copy {
           max-width: 590px;
@@ -147,6 +175,14 @@ export default async function SchoolInvitePage({ params }) {
         .start-button:hover { background: #1f5f3c; }
         @media (max-width: 560px) {
           .school-invite-card { padding: 22px; border-radius: 22px; }
+          .school-title-row {
+            align-items: flex-start;
+            gap: 14px;
+          }
+          .school-emblem {
+            width: 94px;
+            margin-top: -12px;
+          }
           .invite-panel div { display: grid; }
           .invite-panel strong { text-align: left; }
         }

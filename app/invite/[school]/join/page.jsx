@@ -149,11 +149,20 @@ export default function StudentJoinPage() {
         </form>
       </section>
 
+      <footer className="site-footer">
+        <img className="footer-logo dankook" src="/logo-dankook-trimmed.png" alt="단국대학교" />
+        <img className="footer-logo" src="/logo-kakao-impact-trimmed.png" alt="카카오임팩트" />
+        <img className="footer-logo" src="/logo-biohealth-trimmed.png" alt="바이오헬스" />
+        <img className="footer-logo" src="/logo-yongin-trimmed.png" alt="용인시" />
+      </footer>
+
       <style>{`
         .join-page {
           min-height: 100vh;
           display: grid;
           place-items: center;
+          align-content: center;
+          gap: 18px;
           padding: 28px 16px;
           color: #1e2d24;
         }
