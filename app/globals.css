@@ -245,6 +245,93 @@ p { line-height: 1.65; }
   color: var(--muted);
   line-height: 1.7;
 }
+.carbon-chart-panel {
+  display: grid;
+  gap: 10px;
+  padding: 18px 20px 12px;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: #f8fbf8;
+}
+.carbon-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.carbon-chart-header strong {
+  color: var(--green-dark);
+  font-size: 17px;
+  font-weight: 900;
+}
+.carbon-chart-header span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+.carbon-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 250px;
+  overflow: visible;
+}
+.carbon-grid-line {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.carbon-axis-line {
+  stroke: #b9cdbf;
+  stroke-width: 1.2;
+}
+.carbon-axis-label,
+.carbon-value,
+.carbon-month {
+  fill: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+.carbon-bar {
+  fill: var(--green);
+  opacity: .9;
+}
+.carbon-bar.selected {
+  fill: #d59b1f;
+  opacity: 1;
+}
+.carbon-trend-line {
+  fill: none;
+  stroke: var(--green-dark);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.carbon-point {
+  fill: #ffffff;
+  stroke: var(--green-dark);
+  stroke-width: 3;
+}
+.carbon-point.selected {
+  stroke: #d59b1f;
+}
+.carbon-average-line {
+  stroke: #c9a227;
+  stroke-width: 2;
+  stroke-dasharray: 7 7;
+}
+.carbon-average-badge {
+  fill: var(--yellow);
+  stroke: #ecd98f;
+}
+.carbon-average-text {
+  fill: #5b4a13;
+  font-size: 13px;
+  font-weight: 900;
+}
+.carbon-value.selected,
+.carbon-month.selected {
+  fill: var(--green-dark);
+}
 .energy-explainer-group {
   display: grid;
   gap: 8px;

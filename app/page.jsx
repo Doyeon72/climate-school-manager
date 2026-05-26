@@ -582,6 +582,95 @@ function JoayongMascot({ costume, compact = false, large = false }) {
   )
 }
 
+function MonthlyCarbonChart({ valuesByMonth, selectedMonth }) {
+  const chartValues = MONTH_OPTIONS.map((month) => ({
+    month,
+    value: valuesByMonth?.[month] || 0,
+  }))
+  const values = chartValues.map((item) => item.value)
+  const maxValue = Math.max(...values, 40)
+  const yMax = Math.ceil(maxValue / 10) * 10
+  const average = values.reduce((sum, value) => sum + value, 0) / values.length
+  const width = 1100
+  const height = 318
+  const visualMargin = 38
+  const left = 68
+  const graphRightMargin = 0
+  const top = 28
+  const bottom = 66
+  const barWidth = 30
+  const plotHeight = height - top - bottom
+  const averageBadgeWidth = 70
+  const averageBadgeGap = 4
+  const plotRight = width - graphRightMargin - averageBadgeWidth - averageBadgeGap
+  const plotWidth = plotRight - left
+  const step = plotWidth / chartValues.length
+  const averageBadgeX = plotRight + averageBadgeGap
+  const y = (value) => top + plotHeight - (value / yMax) * plotHeight
+  const x = (index) => left + step * index + step / 2
+  const averageY = y(average)
+  const points = chartValues.map((item, index) => `${x(index)},${y(item.value)}`).join(' ')
+  const ticks = [0, 10, 20, 30, 40].filter((tick) => tick <= yMax)
+
+  return (
+    <section className="carbon-chart-panel" aria-label="상현중학교 월별 탄소배출량 그래프">
+      <div className="carbon-chart-header">
+        <strong>월별 흐름</strong>
+        <span>단위: tonCO₂-eq/m²</span>
+      </div>
+      <svg className="carbon-chart" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${selectedMonth}월 탄소배출량 강조 그래프`}>
+        {ticks.map((tick) => (
+          <g key={tick}>
+            <line x1={left} y1={y(tick)} x2={plotRight} y2={y(tick)} className="carbon-grid-line" />
+            <text x={left - 12} y={y(tick) + 5} textAnchor="end" className="carbon-axis-label">
+              {tick}
+            </text>
+          </g>
+        ))}
+        <line x1={left} y1={top} x2={left} y2={top + plotHeight} className="carbon-axis-line" />
+        <line x1={left} y1={top + plotHeight} x2={plotRight} y2={top + plotHeight} className="carbon-axis-line" />
+        <line x1={left} y1={averageY} x2={averageBadgeX + averageBadgeWidth} y2={averageY} className="carbon-average-line" />
+        <rect x={averageBadgeX} y={averageY - 14} width={averageBadgeWidth} height="28" rx="14" className="carbon-average-badge" />
+        <text x={averageBadgeX + averageBadgeWidth / 2} y={averageY + 5} textAnchor="middle" className="carbon-average-text">
+          평균 {average.toFixed(2)}
+        </text>
+        {chartValues.map((item, index) => {
+          const isSelected = item.month === selectedMonth
+          const barHeight = top + plotHeight - y(item.value)
+          return (
+            <g key={item.month}>
+              <rect
+                x={x(index) - barWidth / 2}
+                y={y(item.value)}
+                width={barWidth}
+                height={barHeight}
+                rx="8"
+                className={isSelected ? 'carbon-bar selected' : 'carbon-bar'}
+              />
+              <text x={x(index)} y={top + plotHeight + 25} textAnchor="middle" className={isSelected ? 'carbon-value selected' : 'carbon-value'}>
+                {item.value.toFixed(2)}
+              </text>
+              <text x={x(index)} y={top + plotHeight + 49} textAnchor="middle" className={isSelected ? 'carbon-month selected' : 'carbon-month'}>
+                {item.month}월
+              </text>
+            </g>
+          )
+        })}
+        <polyline points={points} className="carbon-trend-line" />
+        {chartValues.map((item, index) => (
+          <circle
+            key={`point-${item.month}`}
+            cx={x(index)}
+            cy={y(item.value)}
+            r={item.month === selectedMonth ? 5.5 : 4.7}
+            className={item.month === selectedMonth ? 'carbon-point selected' : 'carbon-point'}
+          />
+        ))}
+      </svg>
+    </section>
+  )
+}
+
 export default function HomePage() {
   const [tab, setTab] = useState('home')
   const [observations, setObservations] = useState(INITIAL_OBSERVATIONS)
@@ -850,6 +939,7 @@ export default function HomePage() {
               <p className="energy-lead">
                 이 숫자는 {selectedMonth}월에 학교 건물 1㎡를 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
               </p>
+              <MonthlyCarbonChart valuesByMonth={SCHOOL_CARBON_BY_MONTH[selectedSchoolName]} selectedMonth={selectedMonth} />
               <div className="energy-explainer-grid">
                 {ENERGY_CARD_SECTIONS
                   .filter((section) => !['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
