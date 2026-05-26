@@ -300,12 +300,127 @@ const MANAGER_MISSIONS = [
   ['햇빛이 너무 강한 자리를 찾아보기', '눈부심이 심하거나 수업 집중을 방해하는 공간을 기록해요.'],
 ].map(([title, description]) => ({ title, description }))
 
+const ENERGY_CARD_SECTIONS = [
+  {
+    title: '전기 사용량은 학교생활의 흔적이에요',
+    items: [
+      '오늘 우리 학교가 사용한 전기는 학교가 하루 동안 활동한 흔적이에요.',
+      '전기 사용량은 단순한 숫자가 아니라, 조명, 냉난방, 전자기기 사용이 모인 결과예요.',
+      '같은 학교라도 날씨, 시간표, 행사 여부에 따라 에너지 사용량은 달라질 수 있어요.',
+      '에너지 사용량을 관찰하면 우리 학교의 생활 패턴도 함께 볼 수 있어요.',
+    ],
+  },
+  {
+    title: '탄소발자국과도 연결돼요',
+    items: [
+      '전기를 만드는 과정에서는 온실가스가 발생할 수 있어요. 그래서 전기를 아끼는 것은 탄소발자국을 줄이는 행동과 연결돼요.',
+      '탄소발자국은 우리가 생활하면서 환경에 남기는 흔적이라고 생각할 수 있어요.',
+      '조명 하나를 끄는 작은 행동도, 모이면 학교 전체의 탄소발자국을 줄이는 데 도움이 돼요.',
+      '우리 학교의 전기 사용량을 줄이면 발전 과정에서 생기는 온실가스 배출도 줄이는 데 도움이 돼요.',
+    ],
+  },
+  {
+    title: '숫자를 보고 학교 안에서 찾아봐요',
+    items: [
+      '전기를 많이 쓴 날에는 어떤 공간에서 에너지가 많이 필요했는지 살펴볼 수 있어요.',
+      '오늘은 숫자를 보는 것에서 끝나지 말고, 왜 이런 사용량이 나왔는지 학교 안에서 직접 찾아보세요.',
+      '에너지 사용량이 높게 나온 날에는 날씨, 냉난방, 특별실 사용 여부를 함께 생각해보세요.',
+      '에너지를 절약하는 가장 좋은 방법은 먼저 낭비되는 곳을 발견하는 거예요.',
+    ],
+  },
+  {
+    title: '작은 변화도 의미가 있어요',
+    items: [
+      '전기 사용량이 줄었다면, 우리 학교가 에너지를 더 효율적으로 사용했다는 신호일 수 있어요.',
+      '오늘 줄인 전기 사용량은 우리 학교의 탄소발자국을 줄이는 작은 시작이 될 수 있어요.',
+      '작은 변화라도 꾸준히 이어지면 학교의 에너지 습관이 달라질 수 있어요.',
+      '우리 학교가 만든 변화는 숫자로 확인할 수 있는 환경 실천이에요.',
+    ],
+  },
+]
+
+const OBSERVATION_QUESTION_GROUPS = [
+  {
+    title: '교실 관찰형',
+    questions: [
+      '우리 반에서 가장 자주 불이 켜져 있는 시간대는 언제일까?',
+      '수업이 끝난 뒤에도 조명이나 전자기기가 켜져 있는 교실은 어디일까?',
+      '창가 자리와 복도 쪽 자리의 체감 온도는 얼마나 다를까?',
+      '햇빛이 많이 들어오는 교실은 냉방을 더 많이 사용하게 될까?',
+      '같은 층에서도 유난히 덥거나 추운 교실은 어디일까?',
+      '에어컨을 켰을 때 창문이나 문이 열려 있는 교실은 없을까?',
+      '쉬는 시간마다 교실 문을 열어두면 냉방 효율은 어떻게 달라질까?',
+      '교실 안에서 전기를 가장 많이 쓰는 물건은 무엇일까?',
+      '우리 반에서 하루 동안 가장 오래 켜져 있는 전자기기는 무엇일까?',
+      '빈 교실인데도 멀티탭 전원이 켜져 있는 곳은 없을까?',
+    ],
+  },
+  {
+    title: '학교 공간 관찰형',
+    questions: [
+      '복도 조명은 자연광이 충분할 때도 계속 켜져 있을까?',
+      '화장실 조명은 사람이 없을 때도 켜져 있는 시간이 많을까?',
+      '도서관, 컴퓨터실, 과학실 중 전자기기를 가장 많이 사용하는 공간은 어디일까?',
+      '급식실은 하루 중 언제 에너지를 가장 많이 사용할까?',
+      '체육관은 조명과 냉난방을 언제 가장 많이 사용할까?',
+      '특별실은 사용하지 않는 시간에도 전원이 켜져 있는 경우가 있을까?',
+      '학교에서 냉방이 가장 오래 필요한 공간은 어디일까?',
+      '햇빛이 잘 드는 공간과 그늘진 공간의 에너지 사용 방식은 어떻게 다를까?',
+      '계단, 복도, 현관처럼 공용 공간의 조명은 꼭 필요한 만큼만 사용되고 있을까?',
+      '우리 학교에서 에너지 낭비가 가장 쉽게 생기는 장소는 어디일까?',
+    ],
+  },
+  {
+    title: '계절과 날씨 연결형',
+    questions: [
+      '비 오는 날과 맑은 날의 전기 사용량은 어떻게 다를까?',
+      '미세먼지가 심한 날에는 환기와 냉난방 사용이 어떻게 달라질까?',
+      '여름철 오후에 전기 사용량이 늘어나는 이유는 무엇일까?',
+      '겨울철 아침에 난방 에너지가 많이 필요한 공간은 어디일까?',
+      '일교차가 큰 날에는 냉난방 사용이 어떻게 달라질까?',
+      '바람이 잘 통하는 교실은 냉방을 덜 사용해도 괜찮을까?',
+      '햇빛이 강한 날 블라인드 사용 여부에 따라 실내 온도는 달라질까?',
+      '장마철에는 습도 때문에 냉방 사용이 늘어날까?',
+      '시험 기간에는 학교의 전기 사용 패턴이 달라질까?',
+      '방학 중 학교의 에너지 사용량은 학기 중과 어떻게 다를까?',
+    ],
+  },
+  {
+    title: '탄소발자국 생각형',
+    questions: [
+      '우리가 줄인 전기 사용량은 탄소발자국을 얼마나 줄이는 데 도움이 될까?',
+      '오늘 우리 학교의 전기 사용량은 어제보다 늘었을까, 줄었을까?',
+      '전기 사용량이 줄어들면 학교의 탄소배출도 함께 줄어들까?',
+      '에너지를 아끼는 행동 중 학생들이 가장 쉽게 실천할 수 있는 것은 무엇일까?',
+      '작은 절약 행동이 모이면 학교 전체에서는 어떤 변화가 생길까?',
+      '우리 학교가 에너지 사용량을 줄이면 어떤 환경적 의미가 있을까?',
+      '전기를 덜 쓰는 교실은 어떤 공통점을 가지고 있을까?',
+      '에너지 절약을 잘하는 반은 어떤 습관을 가지고 있을까?',
+      '우리 학교의 에너지 사용량을 줄이기 위해 가장 먼저 바꿀 수 있는 습관은 무엇일까?',
+      '불편하지 않게 아끼는 방법에는 어떤 것들이 있을까?',
+    ],
+  },
+]
+
 const ENERGY_TIPS = [
   ['빈 교실 조명부터 확인하기', '쉬는 시간이나 이동 수업 전에 비어 있는 교실의 조명과 모니터가 꺼져 있는지 살펴봐요.'],
   ['블라인드로 햇빛 조절하기', '오후에 햇빛이 강한 창가는 블라인드를 활용하면 냉방 부담을 줄이는 데 도움이 돼요.'],
   ['창문과 출입문 닫힘 상태 확인하기', '냉난방 중에는 창문이나 출입문이 계속 열려 있지 않은지 확인해요.'],
   ['수도꼭지 물샘 바로 기록하기', '수도꼭지에서 물이 조금씩 새는 곳을 발견하면 기록해서 빠르게 고칠 수 있게 해요.'],
   ['자연광을 쓸 수 있는 시간 찾기', '햇빛이 충분한 시간에는 불필요한 조명을 줄일 수 있는 공간이 있는지 관찰해요.'],
+  ['숫자에서 이유 찾기', '오늘은 숫자를 보는 것에서 끝나지 말고, 왜 이런 사용량이 나왔는지 학교 안에서 직접 찾아보세요.'],
+  ['높은 사용량 살펴보기', '에너지 사용량이 높게 나온 날에는 날씨, 냉난방, 특별실 사용 여부를 함께 생각해보세요.'],
+  ['우리 반 습관 바꾸기', '우리 반의 작은 습관이 학교 전체 에너지 그래프를 바꿀 수 있어요.'],
+  ['낭비되는 곳 발견하기', '에너지를 절약하는 가장 좋은 방법은 먼저 낭비되는 곳을 발견하는 거예요.'],
+  ['관찰을 행동으로 잇기', '오늘의 관찰이 내일의 절약 행동으로 이어질 수 있어요.'],
+  ['우리 공간의 문제로 보기', '학교의 에너지 문제는 어른들만의 일이 아니라, 우리가 매일 생활하는 공간의 문제이기도 해요.'],
+  ['어제보다 줄었다면', '어제보다 전기 사용량이 줄었다면, 우리 학교가 에너지를 더 효율적으로 사용한 하루였을 수 있어요.'],
+  ['작은 변화 이어가기', '작은 변화라도 꾸준히 이어지면 학교의 에너지 습관이 달라질 수 있어요.'],
+  ['절약을 쌓아가기', '오늘의 절약은 작아 보여도, 계속 쌓이면 의미 있는 변화가 돼요.'],
+  ['숫자로 보는 실천', '우리 학교가 만든 변화는 숫자로 확인할 수 있는 환경 실천이에요.'],
+  ['매일의 선택 기억하기', '에너지 절약은 거창한 일이 아니라, 매일 반복되는 작은 선택에서 시작돼요.'],
+  ['탄소발자국 줄이기', '전기를 아끼는 것은 전기요금을 줄이는 것뿐 아니라, 지구에 남기는 부담을 줄이는 일이에요.'],
+  ['조명 하나부터 시작하기', '조명 하나를 끄는 작은 행동도, 모이면 학교 전체의 탄소발자국을 줄이는 데 도움이 돼요.'],
 ].map(([title, description]) => ({ title, description }))
 
 const COSTUMES = [
@@ -377,6 +492,49 @@ function getRandomItem(list) {
   return list[Math.floor(Math.random() * list.length)]
 }
 
+function getStudentStorageId() {
+  if (typeof window === 'undefined') return 'guest'
+  const profile = loadFromStorage('studentProfile', null)
+  if (!profile) return 'guest'
+  return [profile.schoolName, profile.grade, profile.classNumber, profile.studentNumber, profile.studentName]
+    .filter(Boolean)
+    .join('-') || 'guest'
+}
+
+function getStoredDailyEnergyTip() {
+  if (typeof window === 'undefined') return ENERGY_TIPS[0]
+  const storageKey = 'dailyEnergyTip'
+  const stored = loadFromStorage(storageKey, null)
+  if (stored?.savedAt && stored?.tip && Date.now() - stored.savedAt < 24 * 60 * 60 * 1000) {
+    return stored.tip
+  }
+  const tip = getRandomItem(ENERGY_TIPS)
+  saveToStorage(storageKey, { savedAt: Date.now(), tip })
+  return tip
+}
+
+function getStoredYearlyObservationQuestions() {
+  const fallbackQuestions = OBSERVATION_QUESTION_GROUPS.map(({ title, questions }) => ({
+    title,
+    question: questions[0],
+  }))
+  if (typeof window === 'undefined') return fallbackQuestions
+
+  const year = new Date().getFullYear()
+  const storageKey = `yearlyObservationQuestions:${year}:${getStudentStorageId()}`
+  const stored = loadFromStorage(storageKey, null)
+  if (Array.isArray(stored) && stored.length === OBSERVATION_QUESTION_GROUPS.length) {
+    return stored
+  }
+
+  const questionsForYear = OBSERVATION_QUESTION_GROUPS.map(({ title, questions }) => ({
+    title,
+    question: getRandomItem(questions),
+  }))
+  saveToStorage(storageKey, questionsForYear)
+  return questionsForYear
+}
+
 function getClimateLevel(totalPoints) {
   if (totalPoints >= 60) return 4
   if (totalPoints >= 40) return 3
@@ -435,6 +593,9 @@ export default function HomePage() {
   const [toast, setToast] = useState('')
   const [dailyMission, setDailyMission] = useState(MANAGER_MISSIONS[0])
   const [energyTip, setEnergyTip] = useState(ENERGY_TIPS[0])
+  const [yearlyObservationQuestions, setYearlyObservationQuestions] = useState(() =>
+    OBSERVATION_QUESTION_GROUPS.map(({ title, questions }) => ({ title, question: questions[0] }))
+  )
   const [observationForm, setObservationForm] = useState({
     building: '본관',
     floor: '3층',
@@ -459,7 +620,8 @@ export default function HomePage() {
     setSelectedSchoolName(loadFromStorage('selectedSchoolName', DEFAULT_SCHOOL.name))
     setSelectedMonth(loadFromStorage('selectedMonth', 1))
     setDailyMission(getRandomItem(MANAGER_MISSIONS))
-    setEnergyTip(getRandomItem(ENERGY_TIPS))
+    setEnergyTip(getStoredDailyEnergyTip())
+    setYearlyObservationQuestions(getStoredYearlyObservationQuestions())
   }, [])
 
   useEffect(() => saveToStorage('observations', observations), [observations])
@@ -593,7 +755,8 @@ export default function HomePage() {
     setSelectedSchoolName(DEFAULT_SCHOOL.name)
     setSelectedMonth(1)
     setDailyMission(getRandomItem(MANAGER_MISSIONS))
-    setEnergyTip(getRandomItem(ENERGY_TIPS))
+    setEnergyTip(getStoredDailyEnergyTip())
+    setYearlyObservationQuestions(getStoredYearlyObservationQuestions())
     setToast('데모 데이터가 초기화됐어요.')
   }
 
@@ -683,22 +846,50 @@ export default function HomePage() {
               </label>
             </div>
             <h2 className="carbon-metric">{selectedSchool.carbonText}</h2>
-            <p>
-              이 숫자는 {selectedMonth}월에 학교 건물 1㎡를 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
-            </p>
+            <div className="energy-explainer">
+              <p className="energy-lead">
+                이 숫자는 {selectedMonth}월에 학교 건물 1㎡를 사용하는 과정에서 나온 탄소의 양을 뜻해요. 전기와 난방, 냉방 사용이 많아지면 이 숫자가 커질 수 있어요. 우리 학교의 에너지 사용을 이해하는 참고 자료로 봐 주세요.
+              </p>
+              {ENERGY_CARD_SECTIONS
+                .filter((section) => !['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
+                .map((section) => (
+                <div className="energy-explainer-group" key={section.title}>
+                  <h3>{section.title}</h3>
+                  <ul>
+                    {section.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </article>
           <article className="card">
             <p className="eyebrow">우리 학교의 에너지 효율</p>
             <h2>{selectedSchool.efficiencyTier}</h2>
             <p>{selectedSchool.tierMessage}</p>
             <p className="note-text">이 카드는 성적표가 아니에요. 우리 학교를 더 잘 이해하고, 어떤 공간을 살펴보면 좋을지 정하는 자료예요.</p>
+            <div className="energy-explainer efficiency-explainer">
+              {ENERGY_CARD_SECTIONS
+                .filter((section) => ['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
+                .map((section) => (
+                  <div className="energy-explainer-group" key={section.title}>
+                    <h3>{section.title}</h3>
+                    <ul>
+                      {section.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </div>
           </article>
           <article className="card">
             <p className="eyebrow">올해의 관찰 질문</p>
-            <ul className="plain-list">
-              <li>오후에 유난히 더운 공간은 어디일까?</li>
-              <li>블라인드, 창문, 단열 상태 때문에 냉방 효율이 떨어지는 곳은 어디일까?</li>
-              <li>빈 교실 조명이나 모니터가 켜져 있는 공간은 어디일까?</li>
+            <ul className="question-list">
+              {yearlyObservationQuestions.map((item) => (
+                <li key={item.title}>{item.question}</li>
+              ))}
             </ul>
           </article>
           <article className="card soft">

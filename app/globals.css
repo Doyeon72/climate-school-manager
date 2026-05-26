@@ -226,6 +226,47 @@ p { line-height: 1.65; }
   cursor: pointer;
   outline: 0;
 }
+.energy-explainer {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+.efficiency-explainer {
+  margin-top: 18px;
+}
+.energy-lead {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.energy-explainer-group {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #f8fbf8;
+}
+.energy-explainer-group h3 {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 17px;
+}
+.energy-explainer-group ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.question-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.question-list li {
+  padding-left: 4px;
+}
 .plain-list { padding-left: 20px; line-height: 1.8; color: var(--muted); }
 .list-row {
   display: flex;
