@@ -48,7 +48,8 @@ export default function InvitePage() {
       <footer className="site-footer">
         <img className="footer-logo dankook" src="/logo-dankook-trimmed.png" alt="단국대학교" />
         <img className="footer-logo" src="/logo-kakao-impact-trimmed.png" alt="카카오임팩트" />
-        <img className="footer-logo" src="/logo-biohealth-trimmed.png" alt="바이오헬스" />
+        <img className="footer-logo climate-platform" src="/logo-gg-climate-platform.png" alt="경기기후플랫폼" />
+        <img className="footer-logo biohealth" src="/logo-biohealth-trimmed.png" alt="바이오헬스" />
         <img className="footer-logo" src="/logo-yongin-trimmed.png" alt="용인시" />
       </footer>
 

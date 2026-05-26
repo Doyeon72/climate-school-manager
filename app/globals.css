@@ -147,16 +147,12 @@ p { line-height: 1.65; }
 .mascot-card span, small { color: var(--muted); }
 
 .tab-nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
   display: flex;
   gap: 8px;
   padding: 14px 0;
   margin: 12px 0;
   overflow-x: auto;
-  background: rgba(247, 250, 247, .88);
-  backdrop-filter: blur(12px);
+  background: transparent;
 }
 .tab-nav button {
   flex: 0 0 auto;
@@ -561,33 +557,49 @@ textarea { min-height: 92px; resize: vertical; }
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px 28px;
+  flex-wrap: nowrap;
+  gap: clamp(8px, 1.8vw, 22px);
 }
 
 .footer-logo {
   display: block;
   width: auto;
-  height: 52px;
-  max-width: min(44vw, 240px);
+  height: clamp(30px, 4.5vw, 50px);
+  max-width: min(16vw, 210px);
   object-fit: contain;
   opacity: .9;
 }
 
 .footer-logo.dankook {
-  max-width: min(52vw, 260px);
+  max-width: min(20vw, 250px);
+}
+
+.footer-logo.climate-platform {
+  max-width: min(21vw, 250px);
+  transform: translateY(-3px);
+}
+
+.footer-logo.biohealth {
+  transform: translateY(3px);
 }
 
 @media (max-width: 560px) {
   .site-footer {
-    gap: 14px 18px;
+    gap: 6px;
   }
   .footer-logo {
-    height: 42px;
-    max-width: min(46vw, 190px);
+    height: 28px;
+    max-width: 16vw;
   }
   .footer-logo.dankook {
-    max-width: min(72vw, 220px);
+    max-width: 20vw;
+  }
+  .footer-logo.climate-platform {
+    max-width: 21vw;
+    transform: translateY(-2px);
+  }
+  .footer-logo.biohealth {
+    transform: translateY(2px);
   }
 }
 
