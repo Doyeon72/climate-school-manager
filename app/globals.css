@@ -422,17 +422,38 @@ textarea { min-height: 92px; resize: vertical; }
 
 .site-footer {
   margin-top: 28px;
-  padding: 14px 0 4px;
-  text-align: center;
+  padding: 18px 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 28px;
 }
 
-.site-footer img {
-  display: inline-block;
-  width: min(180px, 48vw);
-  max-width: 100%;
-  height: auto;
+.footer-logo {
+  display: block;
+  width: auto;
+  height: 52px;
+  max-width: min(44vw, 240px);
   object-fit: contain;
-  opacity: .86;
+  opacity: .9;
+}
+
+.footer-logo.dankook {
+  max-width: min(52vw, 260px);
+}
+
+@media (max-width: 560px) {
+  .site-footer {
+    gap: 14px 18px;
+  }
+  .footer-logo {
+    height: 42px;
+    max-width: min(46vw, 190px);
+  }
+  .footer-logo.dankook {
+    max-width: min(72vw, 220px);
+  }
 }
 
 /* v4 refinements */
