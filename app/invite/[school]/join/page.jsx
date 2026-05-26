@@ -23,9 +23,29 @@ const SCHOOLS = [
   '성서중학교',
 ]
 
+const DEFAULT_CLASS_COUNTS_BY_GRADE = {
+  1: 12,
+  2: 12,
+  3: 12,
+}
+
+const CLASS_COUNTS_BY_SCHOOL = {
+  상현중학교: {
+    1: 9,
+    2: 10,
+    3: 8,
+  },
+}
+
 function getSchoolName(rawSchool) {
   const decodedSchool = decodeURIComponent(rawSchool || '')
   return SCHOOLS.includes(decodedSchool) ? decodedSchool : '수지구 중학교'
+}
+
+function getClassOptions(schoolName, grade) {
+  const gradeClassCounts = CLASS_COUNTS_BY_SCHOOL[schoolName] || DEFAULT_CLASS_COUNTS_BY_GRADE
+  const classCount = gradeClassCounts[grade] || DEFAULT_CLASS_COUNTS_BY_GRADE[grade] || 12
+  return Array.from({ length: classCount }, (_, index) => String(index + 1))
 }
 
 export default function StudentJoinPage() {
@@ -33,14 +53,21 @@ export default function StudentJoinPage() {
   const schoolName = useMemo(() => getSchoolName(params?.school), [params?.school])
   const [form, setForm] = useState({
     grade: '1',
-    classNumber: '',
+    classNumber: '1',
     studentNumber: '',
     studentName: '',
   })
+  const classOptions = useMemo(() => getClassOptions(schoolName, form.grade), [form.grade, schoolName])
   const [message, setMessage] = useState('')
 
   function updateField(key, value) {
-    setForm((prev) => ({ ...prev, [key]: value }))
+    setForm((prev) => {
+      if (key === 'grade') {
+        const nextClassOptions = getClassOptions(schoolName, value)
+        return { ...prev, grade: value, classNumber: nextClassOptions.includes(prev.classNumber) ? prev.classNumber : '1' }
+      }
+      return { ...prev, [key]: value }
+    })
   }
 
   function submitStudent(event) {
@@ -87,14 +114,16 @@ export default function StudentJoinPage() {
           </label>
           <label>
             반
-            <input
-              inputMode="numeric"
-              min="1"
-              placeholder="예: 3"
-              type="number"
+            <select
               value={form.classNumber}
               onChange={(event) => updateField('classNumber', event.target.value)}
-            />
+            >
+              {classOptions.map((classNumber) => (
+                <option key={classNumber} value={classNumber}>
+                  {classNumber}반
+                </option>
+              ))}
+            </select>
           </label>
           <label>
             번호
@@ -110,7 +139,7 @@ export default function StudentJoinPage() {
           <label>
             이름
             <input
-              placeholder="예: 김도연"
+              placeholder="예: 홍길동"
               value={form.studentName}
               onChange={(event) => updateField('studentName', event.target.value)}
             />
