@@ -945,30 +945,7 @@ export default function HomePage() {
               </p>
               <MonthlyCarbonChart schoolName={selectedSchoolName} valuesByMonth={SCHOOL_CARBON_BY_MONTH[selectedSchoolName]} selectedMonth={selectedMonth} />
               <div className="energy-explainer-grid">
-                {ENERGY_CARD_SECTIONS
-                  .filter((section) => !['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
-                  .map((section) => (
-                    <div className="energy-explainer-group" key={section.title}>
-                      <h3>{section.title}</h3>
-                      <ul>
-                        {section.items.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </article>
-          <article className="card energy-feature">
-            <p className="eyebrow">우리 학교의 에너지 효율</p>
-            <h2>{selectedSchool.efficiencyTier}</h2>
-            <p>{selectedSchool.tierMessage}</p>
-            <p className="note-text">이 카드는 성적표가 아니에요. 우리 학교를 더 잘 이해하고, 어떤 공간을 살펴보면 좋을지 정하는 자료예요.</p>
-            <div className="energy-explainer efficiency-explainer">
-              <div className="energy-explainer-grid">
-                {ENERGY_CARD_SECTIONS
-                  .filter((section) => ['탄소발자국과도 연결돼요', '작은 변화도 의미가 있어요'].includes(section.title))
+                {[ENERGY_CARD_SECTIONS[0], ENERGY_CARD_SECTIONS[2], ENERGY_CARD_SECTIONS[1], ENERGY_CARD_SECTIONS[3]]
                   .map((section) => (
                     <div className="energy-explainer-group" key={section.title}>
                       <h3>{section.title}</h3>
